@@ -1,4 +1,4 @@
-package com.developer.spoti.vspot;
+package com.developer.spoti.vspoti;
 
 import android.app.Activity;
 import android.content.Context;

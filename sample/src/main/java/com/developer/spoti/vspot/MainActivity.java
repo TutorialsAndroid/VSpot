@@ -5,6 +5,8 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.developer.spoti.vspoti.VSpotView;
+
 public class MainActivity extends AppCompatActivity {
 
     private VSpotView mVSpotView;
