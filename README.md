@@ -27,7 +27,7 @@ allprojects {
 ```	
 	Step 2. Add the dependency
 ```groovy	
-compile 'com.github.TutorialsAndroid:Spoti:v1.0.19'
+  implementation 'com.github.TutorialsAndroid:VSpot:v2.1.19'
 ```
 ## Sample usage in your activity:
 
