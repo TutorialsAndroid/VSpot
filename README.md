@@ -8,6 +8,10 @@
 
 This library allows to show intro of your app or a specific view that you want to high-light when you add new features to app.
 
+## Download Our New App
+
+[Cocktail Friendship App](https://play.google.com/store/apps/details?id=developer.cocktail)
+
 ## Sample Screen
 
 ![](https://github.com/TutorialsAndroid/VSpot/blob/master/art/device-2019-09-30-193059.png)
