@@ -2,6 +2,8 @@
 
 # VSpot  [![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=15)     [![Known Vulnerabilities](https://snyk.io//test/github/TutorialsAndroid/VSpot/badge.svg?targetFile=sample/build.gradle)](https://snyk.io//test/github/TutorialsAndroid/VSpot?targetFile=sample/build.gradle) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/TutorialsAndroid/VSpot) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VSpot-orange.svg?style=flat)](https://android-arsenal.com/details/1/7898)
 
+# Heatic Debate App [![](https://play.google.com/store/apps/details?id=com.asm.heatic)(Download Now)
+
 ## Jitpack.io
 
 [![](https://jitpack.io/v/TutorialsAndroid/VSpot.svg)](https://jitpack.io/#TutorialsAndroid/VSpot)
