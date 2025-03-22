@@ -15,7 +15,7 @@ This library allows to show intro of your app or a specific view that you want t
 
 ## And Don't Forget To Follow Me On Instagram
 
-<p align="center">Follow me on instagram to stay up-to-date https://instagram.com/a.masarm444
+<p align="center">Follow me on instagram to stay up-to-date https://instagram.com/coderx09
   
 
 ## Sample Screen
