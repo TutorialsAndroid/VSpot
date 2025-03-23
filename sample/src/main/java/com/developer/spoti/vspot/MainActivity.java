@@ -6,11 +6,14 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.developer.spoti.vspoti.VSpotView;
+import com.developer.spoti.vspoti.VSpotView2;
 
 public class MainActivity extends AppCompatActivity {
 
     private VSpotView mVSpotView;
     private VSpotView.Builder builder;
+    private VSpotView2 vSpotView2;
+    private VSpotView2.Builder builder2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
         mVSpotView = builder.build();
         mVSpotView.show();
+
+        builder2 = new VSpotView2.Builder(MainActivity.this, view1)
+                .setDismissType(VSpotView2.DismissType.anywhere)
+                .setGravity(VSpotView2.Gravity.center);
+
+        vSpotView2 = builder2.build();
+        vSpotView2.show();
+
     }
 
 
