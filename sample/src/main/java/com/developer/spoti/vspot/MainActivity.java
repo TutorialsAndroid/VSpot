@@ -31,21 +31,17 @@ public class MainActivity extends AppCompatActivity {
                 .setDismissType(VSpotView.DismissType.outside)
                 .setTargetView(view1)
                 .setVSpotListener(view -> {
-                    switch (view.getId()){
-                        case R.id.view1:
-                            builder.setTargetView(view2).build();
-                            break;
-                        case R.id.view2:
-                            builder.setTargetView(view3).build();
-                            break;
-                        case R.id.view3:
-                            builder.setTargetView(view4).build();
-                            break;
-                        case R.id.view4:
-                            builder.setTargetView(view5).build();
-                            break;
-                        case R.id.view5:
-                            return;
+                    int id = view.getId();
+                    if (id == R.id.view1) {
+                        builder.setTargetView(view2).build();
+                    } else if (id == R.id.view2) {
+                        builder.setTargetView(view3).build();
+                    } else if (id == R.id.view3) {
+                        builder.setTargetView(view4).build();
+                    } else if (id == R.id.view4) {
+                        builder.setTargetView(view5).build();
+                    } else if (id == R.id.view5) {
+                        return;
                     }
                     mVSpotView = builder.build();
                     mVSpotView.show();
