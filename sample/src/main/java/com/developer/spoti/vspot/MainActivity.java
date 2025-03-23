@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
         mVSpotView = builder.build();
         mVSpotView.show();
 
-        builder2 = new VSpotView2.Builder(MainActivity.this, view1)
-                .setDismissType(VSpotView2.DismissType.anywhere)
-                .setGravity(VSpotView2.Gravity.center);
-
-        vSpotView2 = builder2.build();
-        vSpotView2.show();
+//        builder2 = new VSpotView2.Builder(MainActivity.this, view1)
+//                .setDismissType(VSpotView2.DismissType.anywhere)
+//                .setGravity(VSpotView2.Gravity.center);
+//
+//        vSpotView2 = builder2.build();
+//        vSpotView2.show();
 
     }
 
