@@ -8,23 +8,41 @@ android {
         namespace 'com.developer.spoti.vspoti'
         minSdkVersion 23
         targetSdkVersion 35
-        versionCode 4
-        versionName "3.2.1"
+        versionCode 5
+        versionName "3.2.2"
 	}
 	
 	compileOptions {
         sourceCompatibility 11
         targetCompatibility 11
     }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
 }
 
-publishing {
+// Wrap publishing in afterEvaluate to ensure components are created
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.github.TutorialsAndroid'
+                artifactId = 'VSpot'
+                version = '3.2.2'
 
-    publications {
-        release(MavenPublication) {
-            groupId = 'com.github.TutorialsAndroid' // Match JitPack’s format
-            artifactId = 'VSpot'                     // Your library name
-            version = '3.0.0'                        // Follow semantic versioning
+                // Manually register the "release" component
+                artifact("$buildDir/outputs/aar/library-release.aar")
+
+                pom {
+                    name = 'VSpot'
+                    description = 'VSpot Android Library'
+                    url = 'https://github.com/TutorialsAndroid/VSpot'
+                }
+            }
         }
     }
 }
