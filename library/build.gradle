@@ -34,14 +34,8 @@ afterEvaluate {
                 artifactId = 'VSpot'
                 version = '3.2.3'
 
-                // Manually register the "release" component
-                artifact("$buildDir/outputs/aar/library-release.aar")
-
-                pom {
-                    name = 'VSpot'
-                    description = 'VSpot Android Library'
-                    url = 'https://github.com/TutorialsAndroid/VSpot'
-                }
+                // Important: Include AAR file
+                from components["release"]
             }
         }
     }
