@@ -23,6 +23,13 @@ android {
             shrinkResources false
         }
     }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 // Wrap publishing in afterEvaluate to ensure components are created
@@ -30,6 +37,7 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
+
                 groupId = 'com.github.TutorialsAndroid'
                 artifactId = 'VSpot'
                 version = '3.2.4'
