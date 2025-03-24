@@ -8,8 +8,8 @@ android {
         namespace 'com.developer.spoti.vspoti'
         minSdkVersion 23
         targetSdkVersion 35
-        versionCode 6
-        versionName "3.2.3"
+        versionCode 7
+        versionName "3.2.4"
 	}
 	
 	compileOptions {
@@ -32,7 +32,7 @@ afterEvaluate {
             release(MavenPublication) {
                 groupId = 'com.github.TutorialsAndroid'
                 artifactId = 'VSpot'
-                version = '3.2.3'
+                version = '3.2.4'
 
                 // Important: Include AAR file
                 from components["release"]
