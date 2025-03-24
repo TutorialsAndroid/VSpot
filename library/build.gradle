@@ -18,6 +18,17 @@ android {
     }
 }
 
+publishing {
+
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.TutorialsAndroid' // Match JitPack’s format
+            artifactId = 'VSpot'                     // Your library name
+            version = '3.0.0'                        // Follow semantic versioning
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
