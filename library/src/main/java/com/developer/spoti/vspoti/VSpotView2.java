@@ -158,6 +158,18 @@ public class VSpotView2 extends FrameLayout {
         return false;
     }
 
+    private boolean isViewContains(View view, float rx, float ry) {
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        int x = location[0];
+        int y = location[1];
+        int w = view.getWidth();
+        int h = view.getHeight();
+
+        return !(rx < x || rx > x + w || ry < y || ry > y + h);
+    }
+
+
     private Point resolveMessageViewLocation(int index) {
         RectF rect = targetRects.get(index);
         int xMessageView = (int) (rect.right) - mMessageView.getWidth();
