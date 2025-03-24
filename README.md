@@ -37,7 +37,7 @@ allprojects {
 ```	
 	Step 2. Add the dependency
 ```groovy	
-  implementation 'com.github.TutorialsAndroid:VSpot:v2.2.19'
+  implementation 'com.github.TutorialsAndroid:VSpot:v3.1.1'
 ```
 ## Sample usage in your activity:
 
