@@ -22,8 +22,8 @@ import java.util.List;
 public class VSpotView2 extends FrameLayout {
 
     private static final float INDICATOR_HEIGHT = 30;
-    private float density;
-    private List<View> targetViews;
+    private final float density;
+    private final List<View> targetViews;
     private List<RectF> targetRects;
     private VSpotMessageView mMessageView;
     private boolean isTop;
