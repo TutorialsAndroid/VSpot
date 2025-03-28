@@ -25,7 +25,7 @@ public class VSpotView2 extends FrameLayout {
     private final float density;
     private final List<View> targetViews;
     private final List<RectF> targetRects;
-    private VSpotMessageView mMessageView;
+    private final VSpotMessageView mMessageView;
     private boolean isTop;
     private Gravity mGravity;
     private DismissType dismissType;
