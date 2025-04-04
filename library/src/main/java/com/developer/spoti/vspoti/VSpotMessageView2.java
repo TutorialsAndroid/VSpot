@@ -2,6 +2,8 @@ package com.developer.spoti.vspoti;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Typeface;
 import android.text.Spannable;
 import android.util.TypedValue;
@@ -12,6 +14,11 @@ import android.widget.TextView;
 import android.graphics.drawable.GradientDrawable;
 
 class VSpotMessageView2 extends LinearLayout {
+
+    private final Paint arrowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Path arrowPath = new Path();
+    private static final float ARROW_WIDTH = 20;
+    private static final float ARROW_HEIGHT = 12;
 
     private TextView mTitleTextView;
     private TextView mContentTextView;
