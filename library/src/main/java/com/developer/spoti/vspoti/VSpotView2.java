@@ -70,26 +70,26 @@ public class VSpotView2 extends FrameLayout {
         });
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        if (!targetRects.isEmpty()) {
-            Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-            Canvas tempCanvas = new Canvas(bitmap);
-
-            mPaint.setColor(0xdd000000);
-            mPaint.setStyle(Paint.Style.FILL);
-            mPaint.setAntiAlias(true);
-            tempCanvas.drawRect(canvas.getClipBounds(), mPaint);
-
-            targetPaint.setXfermode(XFERMODE_CLEAR);
-            for (RectF rect : targetRects) {
-                tempCanvas.drawRoundRect(rect, 15 * density, 15 * density, targetPaint);
-            }
-
-            canvas.drawBitmap(bitmap, 0, 0, emptyPaint);
-        }
-    }
+//    @Override
+//    protected void onDraw(Canvas canvas) {
+//        super.onDraw(canvas);
+//        if (!targetRects.isEmpty()) {
+//            Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+//            Canvas tempCanvas = new Canvas(bitmap);
+//
+//            mPaint.setColor(0xdd000000);
+//            mPaint.setStyle(Paint.Style.FILL);
+//            mPaint.setAntiAlias(true);
+//            tempCanvas.drawRect(canvas.getClipBounds(), mPaint);
+//
+//            targetPaint.setXfermode(XFERMODE_CLEAR);
+//            for (RectF rect : targetRects) {
+//                tempCanvas.drawRoundRect(rect, 15 * density, 15 * density, targetPaint);
+//            }
+//
+//            canvas.drawBitmap(bitmap, 0, 0, emptyPaint);
+//        }
+//    }
 
     @Override
     protected void onDraw(Canvas canvas) {
