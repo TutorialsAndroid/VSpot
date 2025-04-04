@@ -27,6 +27,11 @@ public class VSpotView2 extends FrameLayout {
     private final Paint emptyPaint = new Paint();
     private final Xfermode XFERMODE_CLEAR = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
 
+    private final Paint arrowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Path arrowPath = new Path();
+    private static final float ARROW_WIDTH = 20;
+    private static final float ARROW_HEIGHT = 12;
+
     public interface VSpotListener {
         void onDismiss(View view);
     }
