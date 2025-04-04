@@ -2,18 +2,8 @@ package com.developer.spoti.vspoti;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.RectF;
-import android.graphics.Xfermode;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
+import android.graphics.*;
+import android.view.*;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
@@ -26,22 +16,16 @@ public class VSpotView2 extends FrameLayout {
     private List<View> targetViews;
     private List<RectF> targetRects;
     private VSpotMessageView mMessageView;
-    private boolean isTop;
-    private Gravity mGravity;
-    private DismissType dismissType;
-    int marginGuide;
-    private boolean mIsShowing;
+    private Gravity mGravity = Gravity.auto;
+    private DismissType dismissType = DismissType.outside; // Default value
+    private boolean mIsShowing = false;
     private VSpotListener mVSpotListener;
     private int currentTargetIndex = 0;
 
-    final int ANIMATION_DURATION = 400;
-    final Paint emptyPaint = new Paint();
-    final Paint paintLine = new Paint();
-    final Paint paintCircle = new Paint();
-    final Paint paintCircleInner = new Paint();
-    final Paint mPaint = new Paint();
-    final Paint targetPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    final Xfermode XFERMODE_CLEAR = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    private final Paint mPaint = new Paint();
+    private final Paint targetPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint emptyPaint = new Paint();
+    private final Xfermode XFERMODE_CLEAR = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
 
     public interface VSpotListener {
         void onDismiss(View view);
@@ -58,29 +42,27 @@ public class VSpotView2 extends FrameLayout {
     private VSpotView2(Context context, List<View> views) {
         super(context);
         setWillNotDraw(false);
-
         this.targetViews = views;
         this.targetRects = new ArrayList<>();
+        this.density = context.getResources().getDisplayMetrics().density;
 
-        density = context.getResources().getDisplayMetrics().density;
-
+        // Prepare target bounds
         for (View target : targetViews) {
-            int[] locationTarget = new int[2];
-            target.getLocationOnScreen(locationTarget);
-            targetRects.add(new RectF(locationTarget[0], locationTarget[1],
-                    locationTarget[0] + target.getWidth(),
-                    locationTarget[1] + target.getHeight()));
+            int[] location = new int[2];
+            target.getLocationOnScreen(location);
+            targetRects.add(new RectF(location[0], location[1],
+                    location[0] + target.getWidth(),
+                    location[1] + target.getHeight()));
         }
 
-        mMessageView = new VSpotMessageView(getContext());
-        final int padding = (int) (5 * density);
-        mMessageView.setPadding(padding, padding, padding, padding);
-        mMessageView.setColor(Color.WHITE);
+        // Message view
+        mMessageView = new VSpotMessageView(context);
+        addView(mMessageView, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
-        addView(mMessageView, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-
-        setMessageLocation(resolveMessageViewLocation(currentTargetIndex));
+        // Wait for layout to complete before positioning
+        mMessageView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            setMessageLocation(resolveMessageViewLocation(currentTargetIndex));
+        });
     }
 
     @Override
@@ -96,11 +78,10 @@ public class VSpotView2 extends FrameLayout {
             tempCanvas.drawRect(canvas.getClipBounds(), mPaint);
 
             targetPaint.setXfermode(XFERMODE_CLEAR);
-            targetPaint.setAntiAlias(true);
-
             for (RectF rect : targetRects) {
-                tempCanvas.drawRoundRect(rect, 15, 15, targetPaint);
+                tempCanvas.drawRoundRect(rect, 15 * density, 15 * density, targetPaint);
             }
+
             canvas.drawBitmap(bitmap, 0, 0, emptyPaint);
         }
     }
@@ -126,10 +107,13 @@ public class VSpotView2 extends FrameLayout {
     }
 
     public void dismiss() {
-        ((ViewGroup) ((Activity) getContext()).getWindow().getDecorView()).removeView(this);
-        mIsShowing = false;
-        if (mVSpotListener != null) {
-            mVSpotListener.onDismiss(targetViews.get(currentTargetIndex));
+        if (getContext() instanceof Activity) {
+            ViewGroup decor = (ViewGroup) ((Activity) getContext()).getWindow().getDecorView();
+            decor.removeView(this);
+            mIsShowing = false;
+            if (mVSpotListener != null) {
+                mVSpotListener.onDismiss(targetViews.get(currentTargetIndex));
+            }
         }
     }
 
@@ -165,16 +149,14 @@ public class VSpotView2 extends FrameLayout {
         int y = location[1];
         int w = view.getWidth();
         int h = view.getHeight();
-
         return !(rx < x || rx > x + w || ry < y || ry > y + h);
     }
 
-
     private Point resolveMessageViewLocation(int index) {
         RectF rect = targetRects.get(index);
-        int xMessageView = (int) (rect.right) - mMessageView.getWidth();
-        int yMessageView = (int) (rect.top + targetViews.get(index).getHeight() + INDICATOR_HEIGHT * density);
-        return new Point(xMessageView, yMessageView);
+        int x = (int) (rect.right - mMessageView.getWidth());
+        int y = (int) (rect.top + rect.height() + INDICATOR_HEIGHT * density);
+        return new Point(Math.max(x, 0), y);
     }
 
     void setMessageLocation(Point p) {
@@ -184,9 +166,10 @@ public class VSpotView2 extends FrameLayout {
     }
 
     public static class Builder {
-        private List<View> targetViews = new ArrayList<>();
-        private Context context;
+        private final List<View> targetViews = new ArrayList<>();
+        private final Context context;
         private VSpotListener vSpotListener;
+        private DismissType dismissType = DismissType.outside;
 
         public Builder(Context context) {
             this.context = context;
@@ -202,12 +185,16 @@ public class VSpotView2 extends FrameLayout {
             return this;
         }
 
+        public Builder setDismissType(DismissType type) {
+            this.dismissType = type;
+            return this;
+        }
+
         public VSpotView2 build() {
             VSpotView2 vSpotView = new VSpotView2(context, targetViews);
             vSpotView.mVSpotListener = vSpotListener;
+            vSpotView.dismissType = dismissType;
             return vSpotView;
         }
     }
 }
-
-
