@@ -18,6 +18,11 @@ class VSpotMessageView2 extends LinearLayout {
     private long delay = 30; // delay in ms per character
     private final android.os.Handler handler = new android.os.Handler();
 
+    private CharSequence fullTitle = "";
+    private int titleIndex = 0;
+    private long titleDelay = 40; // ms per character (slightly slower for emphasis)
+    private final android.os.Handler titleHandler = new android.os.Handler();
+
     private TextView mTitleTextView;
     private TextView mContentTextView;
     private float density;
