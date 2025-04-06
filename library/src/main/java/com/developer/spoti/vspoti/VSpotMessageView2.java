@@ -38,6 +38,17 @@ class VSpotMessageView2 extends LinearLayout {
         }
     };
 
+    private final Runnable titleCharacterAdder = new Runnable() {
+        @Override
+        public void run() {
+            if (titleIndex <= fullTitle.length()) {
+                mTitleTextView.setText(fullTitle.subSequence(0, titleIndex));
+                titleIndex++;
+                titleHandler.postDelayed(this, titleDelay);
+            }
+        }
+    };
+
     VSpotMessageView2(Context context) {
         super(context);
 
