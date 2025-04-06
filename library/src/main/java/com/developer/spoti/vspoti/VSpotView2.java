@@ -168,6 +168,19 @@ public class VSpotView2 extends FrameLayout {
         canvas.drawPath(arrowPath, arrowPaint);
     }
 
+    private void showMessageWithAnimation() {
+        mMessageView.setAlpha(0f);
+        mMessageView.setScaleX(0.8f);
+        mMessageView.setScaleY(0.8f);
+
+        mMessageView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(300)
+                .setInterpolator(new android.view.animation.DecelerateInterpolator())
+                .start();
+    }
 
     public void nextTarget() {
         if (currentTargetIndex < targetViews.size() - 1) {
