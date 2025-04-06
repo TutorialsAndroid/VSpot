@@ -266,6 +266,7 @@ public class VSpotView2 extends FrameLayout {
     public static class Builder {
         private final List<View> targetViews = new ArrayList<>();
         private final Context context;
+        private String title, contentText;
         private VSpotListener vSpotListener;
         private DismissType dismissType = DismissType.outside;
 
@@ -275,6 +276,16 @@ public class VSpotView2 extends FrameLayout {
 
         public Builder addTargetView(View view) {
             this.targetViews.add(view);
+            return this;
+        }
+
+        public Builder setTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder setContentText(String contentText) {
+            this.contentText = contentText;
             return this;
         }
 
