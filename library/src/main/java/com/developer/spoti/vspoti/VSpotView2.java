@@ -259,6 +259,8 @@ public class VSpotView2 extends FrameLayout {
         mMessageView.setX(p.x);
         mMessageView.setY(p.y);
         requestLayout();
+
+        showMessageWithAnimation();
     }
 
     public static class Builder {
