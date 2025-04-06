@@ -22,6 +22,17 @@ class VSpotMessageView2 extends LinearLayout {
     private TextView mContentTextView;
     private float density;
 
+    private final Runnable characterAdder = new Runnable() {
+        @Override
+        public void run() {
+            if (index <= fullText.length()) {
+                mContentTextView.setText(fullText.subSequence(0, index));
+                index++;
+                handler.postDelayed(this, delay);
+            }
+        }
+    };
+
     VSpotMessageView2(Context context) {
         super(context);
 
