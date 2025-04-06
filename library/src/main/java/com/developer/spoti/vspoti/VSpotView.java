@@ -277,7 +277,6 @@ public class VSpotView extends FrameLayout {
         startAnimation.setFillAfter(true);
         this.startAnimation(startAnimation);
         mIsShowing = true;
-
     }
 
     public void setTitle(String str) {

@@ -11,7 +11,7 @@
         <activity
             android:exported="true"
             android:windowSoftInputMode="stateHidden"
-            android:name="com.developer.spoti.vspot.MainActivity">
+            android:name="com.developer.spoti.vspot.MainActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

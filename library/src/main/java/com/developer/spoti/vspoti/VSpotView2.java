@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.*;
 import android.view.*;
+import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
@@ -31,6 +32,8 @@ public class VSpotView2 extends FrameLayout {
     private final Path arrowPath = new Path();
     private static final float ARROW_WIDTH = 20;
     private static final float ARROW_HEIGHT = 12;
+
+    final int ANIMATION_DURATION = 400;
 
     public interface VSpotListener {
         void onDismiss(View view);
@@ -198,6 +201,19 @@ public class VSpotView2 extends FrameLayout {
         }
     }
 
+    public void show() {
+        this.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        this.setClickable(false);
+
+        ((ViewGroup) ((Activity) getContext()).getWindow().getDecorView()).addView(this);
+        AlphaAnimation startAnimation = new AlphaAnimation(0.0f, 1.0f);
+        startAnimation.setDuration(ANIMATION_DURATION);
+        startAnimation.setFillAfter(true);
+        this.startAnimation(startAnimation);
+        mIsShowing = true;
+    }
+
     public boolean isShowing() {
         return mIsShowing;
     }
@@ -267,6 +283,7 @@ public class VSpotView2 extends FrameLayout {
         private final List<View> targetViews = new ArrayList<>();
         private final Context context;
         private String title, contentText;
+        private Gravity gravity;
         private VSpotListener vSpotListener;
         private DismissType dismissType = DismissType.outside;
 
@@ -286,6 +303,11 @@ public class VSpotView2 extends FrameLayout {
 
         public Builder setContentText(String contentText) {
             this.contentText = contentText;
+            return this;
+        }
+
+        public Builder setGravity(Gravity gravity) {
+            this.gravity = gravity;
             return this;
         }
 
