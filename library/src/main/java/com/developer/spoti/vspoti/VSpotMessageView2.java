@@ -69,6 +69,14 @@ class VSpotMessageView2 extends LinearLayout {
         addView(mContentTextView, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
+    public void animateContentText(String text) {
+        fullText = text;
+        index = 0;
+        mContentTextView.setText(""); // clear previous
+        handler.removeCallbacks(characterAdder); // in case of overlap
+        handler.postDelayed(characterAdder, delay);
+    }
+
     public void setTitle(String title) {
         if (title == null || title.trim().isEmpty()) {
             mTitleTextView.setVisibility(GONE);
