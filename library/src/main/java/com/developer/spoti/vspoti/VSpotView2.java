@@ -15,7 +15,7 @@ public class VSpotView2 extends FrameLayout {
     private float density;
     private List<View> targetViews;
     private List<RectF> targetRects;
-    private VSpotMessageView mMessageView;
+    private VSpotMessageView2 mMessageView;
     private Gravity mGravity = Gravity.auto;
     private DismissType dismissType = DismissType.outside; // Default value
     private boolean mIsShowing = false;
@@ -61,7 +61,7 @@ public class VSpotView2 extends FrameLayout {
         }
 
         // Message view
-        mMessageView = new VSpotMessageView(context);
+        mMessageView = new VSpotMessageView2(context);
         addView(mMessageView, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         // Wait for layout to complete before positioning
@@ -116,6 +116,56 @@ public class VSpotView2 extends FrameLayout {
             // Draw pointer/arrow to current target
             drawArrowToTarget(canvas);
         }
+    }
+
+    private void drawArrowToTarget(Canvas canvas) {
+        RectF target = targetRects.get(currentTargetIndex);
+        float targetCenterX = target.centerX();
+        float targetTopY = target.top;
+        float targetBottomY = target.bottom;
+
+        float messageX = mMessageView.getX();
+        float messageY = mMessageView.getY();
+        float messageWidth = mMessageView.getWidth();
+        float messageHeight = mMessageView.getHeight();
+
+        float arrowCenterX = Math.max(messageX, Math.min(targetCenterX, messageX + messageWidth));
+        float arrowTipX = arrowCenterX;
+        float arrowTipY;
+        boolean drawArrowDownward;
+
+        if (messageY > targetBottomY) {
+            // Message is below target – arrow points up
+            arrowTipY = messageY;
+            drawArrowDownward = false;
+        } else {
+            // Message is above target – arrow points down
+            arrowTipY = messageY + messageHeight;
+            drawArrowDownward = true;
+        }
+
+        float halfWidth = ARROW_WIDTH / 2f;
+        float height = ARROW_HEIGHT;
+
+        arrowPath.reset();
+
+        if (drawArrowDownward) {
+            // Pointing downward
+            arrowPath.moveTo(arrowTipX, arrowTipY);
+            arrowPath.lineTo(arrowTipX - halfWidth, arrowTipY - height);
+            arrowPath.lineTo(arrowTipX + halfWidth, arrowTipY - height);
+        } else {
+            // Pointing upward
+            arrowPath.moveTo(arrowTipX, arrowTipY);
+            arrowPath.lineTo(arrowTipX - halfWidth, arrowTipY + height);
+            arrowPath.lineTo(arrowTipX + halfWidth, arrowTipY + height);
+        }
+
+        arrowPath.close();
+
+        arrowPaint.setColor(Color.WHITE); // same as message background
+        arrowPaint.setStyle(Paint.Style.FILL);
+        canvas.drawPath(arrowPath, arrowPaint);
     }
 
 

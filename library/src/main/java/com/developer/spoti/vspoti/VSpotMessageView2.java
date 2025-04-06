@@ -2,8 +2,6 @@ package com.developer.spoti.vspoti;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.Typeface;
 import android.text.Spannable;
 import android.util.TypedValue;

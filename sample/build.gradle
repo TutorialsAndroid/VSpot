@@ -6,8 +6,8 @@ android {
         namespace 'com.developer.spoti.vspot'
         minSdkVersion 23
         targetSdkVersion 35
-        versionCode 8
-        versionName "3.2.5"
+        versionCode 9
+        versionName "3.3.5"
     }
 	
 	 compileOptions {
