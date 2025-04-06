@@ -13,6 +13,11 @@ import android.graphics.drawable.GradientDrawable;
 
 class VSpotMessageView2 extends LinearLayout {
 
+    private CharSequence fullText = "";
+    private int index = 0;
+    private long delay = 30; // delay in ms per character
+    private final android.os.Handler handler = new android.os.Handler();
+
     private TextView mTitleTextView;
     private TextView mContentTextView;
     private float density;
