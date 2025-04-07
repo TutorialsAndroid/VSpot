@@ -280,19 +280,19 @@ public class VSpotView extends FrameLayout {
     }
 
     public void setTitle(String str) {
-        mMessageView.animateTitleText(str);
+        mMessageView.setTitle(str);
     }
 
     public void setContentText(String str) {
-        mMessageView.animateContentText(str);
+        mMessageView.setContentText(str);
     }
 
     public void animateTitle(String title) {
-        mMessageView.animateTitleText(str);
+        mMessageView.animateTitleText(title);
     }
 
     public void animateContent(String content) {
-        mMessageView.animateContentText(str);
+        mMessageView.animateContentText(content);
     }
 
 
