@@ -322,6 +322,7 @@ public class VSpotView extends FrameLayout {
     public static class Builder {
         private View targetView;
         private String title, contentText;
+        private boolean isAnimateTitle, isAnimateContent;
         private Gravity gravity;
         private DismissType dismissType;
         private Context context;
