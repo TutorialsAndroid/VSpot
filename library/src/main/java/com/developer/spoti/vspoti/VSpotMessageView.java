@@ -56,7 +56,7 @@ class VSpotMessageView extends LinearLayout {
         mContentTextView.setGravity(Gravity.CENTER);
         addView(mContentTextView, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
-    
+
     public void setTitle(String title) {
         if (title == null) {
             removeView(mTitleTextView);

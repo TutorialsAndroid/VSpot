@@ -5,12 +5,13 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.developer.spoti.vspoti.VSpotView;
 import com.developer.spoti.vspoti.VSpotView2;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    private VSpotView2 mVSpotView;
-    private VSpotView2.Builder builder;
+    private VSpotView mVSpotView;
+    private VSpotView.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +24,23 @@ public class MainActivity2 extends AppCompatActivity {
         final View view4 = findViewById(R.id.view4);
         final View view5 = findViewById(R.id.view5);
 
-        builder = new VSpotView2.Builder(MainActivity2.this)
+        builder = new VSpotView.Builder(MainActivity2.this)
                 .setTitle("Guide Title Text")
                 .setContentText("Spoti Description Text\n .....Spoti Description Text\n .....Spoti Description Text .....")
 
-                .setGravity(VSpotView2.Gravity.center)
-                .setDismissType(VSpotView2.DismissType.outside)
-                .addTargetView(view1)
+                .setGravity(VSpotView.Gravity.center)
+                .setDismissType(VSpotView.DismissType.outside)
+                .setTargetView(view1)
                 .setVSpotListener(view -> {
                     int id = view.getId();
                     if (id == R.id.view1) {
-                        builder.addTargetView(view2).build();
+                        builder.setTargetView(view2).build();
                     } else if (id == R.id.view2) {
-                        builder.addTargetView(view3).build();
+                        builder.setTargetView(view3).build();
                     } else if (id == R.id.view3) {
-                        builder.addTargetView(view4).build();
+                        builder.setTargetView(view4).build();
                     } else if (id == R.id.view4) {
-                        builder.addTargetView(view5).build();
+                        builder.setTargetView(view5).build();
                     } else if (id == R.id.view5) {
                         return;
                     }

@@ -28,7 +28,7 @@ public class VSpotView extends FrameLayout {
     private float density;
     private View target;
     private RectF rect;
-    private VSpotMessageView mMessageView;
+    private VSpotMessageView2 mMessageView;
     private boolean isTop;
     private Gravity mGravity;
     private DismissType dismissType;
@@ -74,7 +74,7 @@ public class VSpotView extends FrameLayout {
                 locationTarget[0] + target.getWidth(),
                 locationTarget[1] + target.getHeight());
 
-        mMessageView = new VSpotMessageView(getContext());
+        mMessageView = new VSpotMessageView2(getContext());
         final int padding = (int) (5 * density);
         mMessageView.setPadding(padding, padding, padding, padding);
         mMessageView.setColor(Color.WHITE);
@@ -280,11 +280,11 @@ public class VSpotView extends FrameLayout {
     }
 
     public void setTitle(String str) {
-        mMessageView.setTitle(str);
+        mMessageView.animateTitleText(str);
     }
 
     public void setContentText(String str) {
-        mMessageView.setContentText(str);
+        mMessageView.animateContentText(str);
     }
 
 
