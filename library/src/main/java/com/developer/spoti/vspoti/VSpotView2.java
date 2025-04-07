@@ -325,6 +325,7 @@ public class VSpotView2 extends FrameLayout {
             VSpotView2 vSpotView = new VSpotView2(context, targetViews);
             vSpotView.mVSpotListener = vSpotListener;
             vSpotView.dismissType = dismissType;
+
             return vSpotView;
         }
     }
