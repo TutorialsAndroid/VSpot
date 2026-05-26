@@ -49,7 +49,7 @@ It is lightweight, Java-friendly, customizable, and built for real Android apps 
 * [Dismiss Modes](#-dismiss-modes)
 * [Gravity Options](#-gravity-options)
 * [Spotlight Shapes](#-spotlight-shapes)
-* [Style API](#-style-api)
+* [Style API](#%EF%B8%8F-style-api)
 * [Builder API](#-builder-api)
 * [Migration Guide](#-migration-guide)
 * [Best Practices](#-best-practices)
