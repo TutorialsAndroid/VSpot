@@ -54,6 +54,7 @@ It is lightweight, Java-friendly, customizable, and built for real Android apps 
 * [Gravity Options](#-gravity-options)
 * [Spotlight Shapes](#-spotlight-shapes)
 * [Style API](#%EF%B8%8F-style-api)
+* [Advanced Customization Options](#-advanced-customization-options)
 * [Builder API](#%EF%B8%8F-builder-api)
 * [Migration Guide](#-migration-guide)
 * [Best Practices](#-best-practices)
@@ -850,6 +851,238 @@ new VSpotView.Builder(this)
 | `setShowPreviousButton(boolean showPreviousButton)`                      | Shows/hides previous button.          |
 | `setButtonTexts(String previous, String next, String done, String skip)` | Customizes button labels.             |
 | `setAnimationDuration(long durationMillis)`                              | Sets animation duration.              |
+
+---
+
+## 🎨 Advanced Customization Options
+
+VSpot v4.0.0 provides a complete styling API for developers who want full control over the spotlight overlay, message card, typography, indicator, highlight box, and content alignment.
+
+These options are useful when you want VSpot to match your app branding or when you need different visual styles for different onboarding flows.
+
+### Typeface Customization
+
+You can customize title and content fonts using Android `Typeface`.
+
+This supports:
+
+* Normal
+* Bold
+* Italic
+* Bold Italic
+* Custom typefaces
+
+```java
+VSpotView.Style style = new VSpotView.Style();
+
+style.titleTypeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD_ITALIC);
+style.contentTypeface = Typeface.create(Typeface.DEFAULT, Typeface.ITALIC);
+
+new VSpotView.Builder(this)
+        .setStyle(style)
+        .setTargetView(myView)
+        .setTitle("Custom Typeface")
+        .setContentText("Title and content can use different typefaces.")
+        .show();
+````
+
+Required import:
+
+```java
+import android.graphics.Typeface;
+```
+
+---
+
+### Title and Content Color Customization
+
+You can set different colors for the title and content text.
+
+```java
+VSpotView.Style style = new VSpotView.Style();
+
+style.titleColor = 0xFF111827;
+style.contentColor = 0xFF4B5563;
+
+new VSpotView.Builder(this)
+        .setStyle(style)
+        .setTargetView(myView)
+        .setTitle("Custom Text Colors")
+        .setContentText("VSpot lets you control title and content text colors.")
+        .show();
+```
+
+You can also use fast builder methods:
+
+```java
+new VSpotView.Builder(this)
+        .setTargetView(myView)
+        .setTitle("Custom Colors")
+        .setContentText("Set title and content colors directly from the builder.")
+        .setTitleColor(0xFF111827)
+        .setContentColor(0xFF4B5563)
+        .show();
+```
+
+---
+
+### Overlay Dark Intensity
+
+The overlay darkness can be customized using `overlayColor`.
+
+Use the alpha value to control intensity.
+
+```java
+VSpotView.Style style = new VSpotView.Style();
+
+// Light dark overlay
+style.overlayColor = 0x99000000;
+
+// Medium dark overlay
+style.overlayColor = 0xCC000000;
+
+// Strong dark overlay
+style.overlayColor = 0xE6000000;
+
+new VSpotView.Builder(this)
+        .setStyle(style)
+        .setTargetView(myView)
+        .setTitle("Overlay Intensity")
+        .setContentText("Control how dark the non-highlighted area should be.")
+        .show();
+```
+
+Builder shortcut:
+
+```java
+new VSpotView.Builder(this)
+        .setTargetView(myView)
+        .setTitle("Dark Overlay")
+        .setContentText("The background intensity is fully customizable.")
+        .setOverlayColor(0xE6000000)
+        .show();
+```
+
+---
+
+### Highlight Box Color
+
+You can customize the highlighted target border color using `targetStrokeColor`.
+
+```java
+VSpotView.Style style = new VSpotView.Style();
+
+style.targetStrokeColor = 0xFFFFFFFF;
+style.targetPulseColor = 0x66FFFFFF;
+style.showTargetStroke = true;
+style.showPulse = true;
+
+new VSpotView.Builder(this)
+        .setStyle(style)
+        .setTargetView(myView)
+        .setTitle("Highlight Box")
+        .setContentText("Customize the border and pulse around the highlighted view.")
+        .show();
+```
+
+Builder shortcut:
+
+```java
+new VSpotView.Builder(this)
+        .setTargetView(myView)
+        .setTitle("Custom Highlight")
+        .setContentText("The target highlight border color can be customized.")
+        .setTargetStrokeColor(0xFFFFFFFF)
+        .show();
+```
+
+---
+
+### Indicator Color Customization
+
+The step indicator badge can be styled using `stepBadgeColor` and `stepBadgeTextColor`.
+
+```java
+VSpotView.Style style = new VSpotView.Style();
+
+style.stepBadgeColor = 0xFF6750A4;
+style.stepBadgeTextColor = 0xFFFFFFFF;
+style.showStepIndicator = true;
+
+new VSpotView.Builder(this)
+        .setStyle(style)
+        .addStep(view1, "Step One", "This is the first step.")
+        .addStep(view2, "Step Two", "This is the second step.")
+        .show();
+```
+
+---
+
+### Content Without Title
+
+VSpot v4.0.0 automatically handles content-only messages.
+
+If the title is empty or not provided, the content remains cleanly centered inside the message card.
+
+```java
+new VSpotView.Builder(this)
+        .setTargetView(myView)
+        .setContentText("This message has content only and no title.")
+        .setShowControls(false)
+        .setShowStepIndicator(false)
+        .show();
+```
+
+You can also create content-only steps:
+
+```java
+new VSpotView.Builder(this)
+        .addStep(new VSpotView.Step.Builder(myView)
+                .setContentText("This step has no title, only centered content.")
+                .build())
+        .show();
+```
+
+---
+
+### Complete Customization Example
+
+```java
+VSpotView.Style style = new VSpotView.Style();
+
+style.overlayColor = 0xE6000000;
+
+style.cardColor = 0xFFFFFFFF;
+style.cardStrokeColor = 0x1F000000;
+style.cardCornerRadiusDp = 24f;
+
+style.titleColor = 0xFF111827;
+style.contentColor = 0xFF4B5563;
+
+style.titleTypeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD_ITALIC);
+style.contentTypeface = Typeface.create(Typeface.DEFAULT, Typeface.ITALIC);
+
+style.targetStrokeColor = 0xFFFFFFFF;
+style.targetPulseColor = 0x66FFFFFF;
+
+style.stepBadgeColor = 0xFF6750A4;
+style.stepBadgeTextColor = 0xFFFFFFFF;
+
+style.connectorColor = 0xFFFFFFFF;
+style.accentColor = 0xFF6750A4;
+
+style.showTargetStroke = true;
+style.showPulse = true;
+style.showStepIndicator = true;
+style.showConnector = true;
+
+new VSpotView.Builder(this)
+        .setStyle(style)
+        .setTargetView(myView)
+        .setTitle("Fully Customizable")
+        .setContentText("Customize typefaces, text colors, overlay intensity, highlight box, indicator, and more.")
+        .show();
+```
 
 ---
 
