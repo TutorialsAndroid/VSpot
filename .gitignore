@@ -7,3 +7,8 @@
 /build
 /captures
 .externalNativeBuild
+create-central-bundle.ps1
+HowToPublish.txt
+library/build/
+sample/build/
+local.properties

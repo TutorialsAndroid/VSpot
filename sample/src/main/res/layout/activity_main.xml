@@ -1,77 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootScroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F8F7FF"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VSpot v4.0.0"
+            android:textColor="#111827"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Professional spotlight onboarding library demo"
+            android:textColor="#6B7280"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnStartTour"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="18dp"
+            android:text="Start VSpot Tour" />
 
         <TextView
             android:id="@+id/view1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:text="Guide Test 1" />
+            android:layout_gravity="end"
+            android:layout_marginTop="28dp"
+            android:background="#FFFFFF"
+            android:elevation="3dp"
+            android:paddingStart="18dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="12dp"
+            android:text="Guide Text"
+            android:textColor="#111827"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="28dp"
+            android:background="#FFFFFF"
+            android:elevation="3dp"
+            android:padding="14dp"
             android:src="@mipmap/ic_launcher"
-
-            />
+            android:contentDescription="App icon" />
 
         <Button
             android:id="@+id/view3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="80dp"
-            android:layout_marginTop="30dp"
-            android:padding="10dp"
-            android:text="Guide Test 3" />
+            android:layout_height="52dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="52dp"
+            android:text="Main Action" />
 
         <EditText
             android:id="@+id/view4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:text="Guide Test 4" />
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="28dp"
+            android:background="#FFFFFF"
+            android:elevation="3dp"
+            android:hint="Enter your name"
+            android:inputType="textPersonName"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="#111827"
+            android:textColorHint="#9CA3AF" />
 
         <LinearLayout
-            android:gravity="center"
             android:id="@+id/view5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:background="#FFFFFF"
+            android:elevation="3dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Guide Test 4" />
+                android:text="Enable alerts"
+                android:textColor="#111827" />
 
             <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:padding="8dp"
                 android:src="@android:drawable/ic_btn_speak_now"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp" />
+                android:contentDescription="Speaker icon" />
 
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="260dp" />
 
     </LinearLayout>
 </ScrollView>

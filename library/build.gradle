@@ -2,53 +2,59 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 group='com.github.TutorialsAndroid'
 
+ext {
+    PUBLISH_GROUP_ID = 'io.github.tutorialsandroid'
+    PUBLISH_VERSION = '4.0.0'
+    PUBLISH_ARTIFACT_ID = 'vspot'
+    PUBLISH_DESCRIPTION = 'A nice focus view intro for your app. Focus a specific view on first time launch'
+    PUBLISH_URL = 'https://github.com/TutorialsAndroid/VSpot'
+    PUBLISH_LICENSE_NAME = 'Apache License'
+    PUBLISH_LICENSE_URL =
+            'https://github.com/TutorialsAndroid/VSpot/blob/master/LICENSE'
+    PUBLISH_DEVELOPER_ID = 'tutorialsandroid'
+    PUBLISH_DEVELOPER_NAME = 'Akshay Masram'
+    PUBLISH_DEVELOPER_EMAIL = 'akshaysunilmasram@yahoo.com'
+    PUBLISH_SCM_CONNECTION =
+            'scm:git:github.com/tutorialsandroid/vspot.git'
+    PUBLISH_SCM_DEVELOPER_CONNECTION =
+            'scm:git:ssh://github.com/tutorialsandroid/vspot.git'
+    PUBLISH_SCM_URL =
+            'https://github.com/tutorialsandroid/vspot/tree/master'
+}
+
 android {
-    compileSdkVersion 35
+    namespace 'com.developer.spoti.vspoti'
+    compileSdk 37
+
 	defaultConfig {
-        namespace 'com.developer.spoti.vspoti'
-        minSdkVersion 23
-        targetSdkVersion 35
-        versionCode 9
-        versionName "3.3.5"
-	}
-	
-	compileOptions {
-        sourceCompatibility 11
-        targetCompatibility 11
+        minSdk 23
+        targetSdk 37
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
     publishing {
-        singleVariant('release') {
+        singleVariant("release") {
             withSourcesJar()
             withJavadocJar()
         }
     }
-}
 
-// Wrap publishing in afterEvaluate to ensure components are created
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-
-                groupId = 'com.github.TutorialsAndroid'
-                artifactId = 'VSpot'
-                version = '3.2.5'
-
-                // Important: Include AAR file
-                from components["release"]
-            }
-        }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    lint {
+        abortOnError false
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
