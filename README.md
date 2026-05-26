@@ -50,13 +50,13 @@ It is lightweight, Java-friendly, customizable, and built for real Android apps 
 * [Gravity Options](#-gravity-options)
 * [Spotlight Shapes](#-spotlight-shapes)
 * [Style API](#%EF%B8%8F-style-api)
-* [Builder API](#-builder-api)
+* [Builder API](#%EF%B8%8F-builder-api)
 * [Migration Guide](#-migration-guide)
 * [Best Practices](#-best-practices)
-* [Troubleshooting](#-troubleshooting)
+* [Troubleshooting](#%EF%B8%8F-troubleshooting)
 * [Changelog](#-changelog)
 * [License](#-license)
-* [Support](#-support)
+* [Support](#-support-the-project)
 
 ---
 
