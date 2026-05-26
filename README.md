@@ -9,7 +9,7 @@ Build beautiful onboarding flows, feature highlights, guided tours, coach marks,
 <br>
 
 [![](https://jitpack.io/v/TutorialsAndroid/VSpot.svg)](https://jitpack.io/#TutorialsAndroid/VSpot)
-![Maven Central](https://img.shields.io/maven-central/v/io.github.tutorialsandroid/vspot)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.tutorialsandroid/vspot)](https://central.sonatype.com/artifact/io.github.tutorialsandroid/vspot)
 <br>
 
 <a href="https://github.com/TutorialsAndroid/VSpot/releases/tag/v4.0.0">
