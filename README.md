@@ -8,6 +8,10 @@ Build beautiful onboarding flows, feature highlights, guided tours, coach marks,
 
 <br>
 
+[![](https://jitpack.io/v/TutorialsAndroid/VSpot.svg)](https://jitpack.io/#TutorialsAndroid/VSpot)
+![Maven Central](https://img.shields.io/maven-central/v/io.github.tutorialsandroid/vspot)
+<br>
+
 <a href="https://github.com/TutorialsAndroid/VSpot/releases/tag/v4.0.0">
   <img src="https://img.shields.io/badge/version-4.0.0-6750A4?style=for-the-badge" alt="Version 4.0.0" />
 </a>
