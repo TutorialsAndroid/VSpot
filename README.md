@@ -173,6 +173,7 @@ Many onboarding libraries are either too heavy, outdated, hard to style, or focu
       <br />
       <sub>VSpot v4.0.0 works with images and dynamic layouts without manual x/y calculations.</sub>
     </td>
+  </tr>    
     <td align="center" width="25%">
       <img src="/art/Screenshot_1779781393.png" width="220" alt="VSpot Action Area" />
       <br />
@@ -202,8 +203,6 @@ Many onboarding libraries are either too heavy, outdated, hard to style, or focu
 ---
 
 ## 📦 Installation
-
-> Replace the dependency coordinates if your Maven Central group ID or artifact ID is different.
 
 ### Maven Central
 
